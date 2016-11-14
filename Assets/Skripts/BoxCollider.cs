@@ -50,9 +50,7 @@ public class BoxCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        RaycastHit hitactor = new RaycastHit();
-        BoxCollider other = hitactor.transform.GetComponent<BoxCollider>();
+        BoxCollider other = FindObjectsOfTypeAll(BoxCollider);
         this.Collision(this, other);
     }
 
