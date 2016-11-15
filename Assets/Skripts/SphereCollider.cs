@@ -9,8 +9,7 @@ public class SphereCollider : MotherCollider
 
 
     SphereCollider()
-    {
-        
+    {        
         BoundingSphere SphereBounds = this.gameObject.GetComponent<BoundingSphere>();
         SphereCenter = Vector3D.ConvertToVector3D(SphereBounds.position);
         SphereRadius = SphereBounds.radius;
@@ -24,8 +23,8 @@ public class SphereCollider : MotherCollider
 	// Update is called once per frame
 	void Update ()
     {
-        this.Collision(other);
-	}
+   
+    }
 
     public override void Collision(MotherCollider other)
     {
@@ -43,7 +42,7 @@ public class SphereCollider : MotherCollider
         else
             grounded = false;
 
-        if (!grounded && distance < this.SphereRadius && this.SphereCenter.y < other.BoxCenter.y|| !grounded && distance < this.SphereRadius && this.SphereCenter.x < other.BoxCenter.x || !grounded && distance < this.SphereRadius && this.SphereCenter.x > other.BoxCenter.x || !grounded && distance < this.SphereRadius && this.SphereCenter.z < other.BoxCenter.z || !grounded && distance < this.SphereRadius && this.SphereCenter.z > other.BoxCenter.z )
+        if (  distance < this.SphereRadius && this.SphereCenter.y < other.BoxCenter.y||   distance < this.SphereRadius && this.SphereCenter.x < other.BoxCenter.x ||  distance < this.SphereRadius && this.SphereCenter.x > other.BoxCenter.x ||  distance < this.SphereRadius && this.SphereCenter.z < other.BoxCenter.z || distance < this.SphereRadius && this.SphereCenter.z > other.BoxCenter.z )
         {
             Destroy(this);
         }

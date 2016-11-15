@@ -2,8 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class CollisionManager: MonoBehaviour
+public class CollisionManager: MonoBehaviour
 {
+    CollisionManager()
+    {
+        
+    }
+
     public List<MotherCollider> Collisionboxes = new List<MotherCollider>();
 
     public void CheckNewBoxes()
@@ -15,10 +20,6 @@ public abstract class CollisionManager: MonoBehaviour
         }
     }
 
-    void update()
-    {
-
-    }
 
     public void Collisiondetektion()
     {
@@ -28,10 +29,17 @@ public abstract class CollisionManager: MonoBehaviour
             {
                 if (ColliderA != ColliderB)
                 {
-                    ColliderA.transform.GetComponent<BoxCollider>().Collision( ColliderB);
+                    ColliderA.transform.GetComponent<SphereCollider>().Collision( ColliderB);
                 } 
             }
         }
 
+    }
+    void start()
+    {
+    }
+    void update()
+    {
+        Collisiondetektion();    
     }
 }
