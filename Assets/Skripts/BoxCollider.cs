@@ -11,8 +11,7 @@ public class BoxCollider : MotherCollider
     Vector3D BoxTopLeftBack;
     Vector3D BoxTopRightFront;
     Vector3D BoxTopRightBack;
-    Vector3D BoxCenter;
-    Vector3D BoxSize;
+
 
 
 

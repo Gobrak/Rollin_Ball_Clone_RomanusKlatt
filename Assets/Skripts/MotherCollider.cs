@@ -14,6 +14,9 @@ public abstract class MotherCollider: MonoBehaviour
     public float distanceZ;
     public bool grounded;
 
+    public Vector3D BoxCenter;
+    public Vector3D BoxSize;
+
     public virtual void Collision(MotherCollider other)
     {
       

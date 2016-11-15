@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class SphereCollider : MotherCollider
 {
     Vector3D SphereCenter;
@@ -23,16 +24,28 @@ public class SphereCollider : MotherCollider
 	// Update is called once per frame
 	void Update ()
     {
-	
+        this.Collision(other);
 	}
 
     public override void Collision(MotherCollider other)
     {
-        distanceX = other.smallestX - this.SphereCenter.x;
+        //closest Point to sphere center
+        distanceX = Mathf.Max(other.smallestX, Mathf.Min(this.SphereCenter.x, other.biggestX));
+        distanceY = Mathf.Max(other.smallestY, Mathf.Min(this.SphereCenter.y, other.biggestY));
+        distanceZ = Mathf.Max(other.smallestZ, Mathf.Min(this.SphereCenter.z, other.biggestZ));
 
-        if (true)
+        float distance = Mathf.Sqrt((distanceX - this.SphereCenter.x) * (distanceX - this.SphereCenter.x) + (distanceY - this.SphereCenter.y) * (distanceY - this.SphereCenter.y) + (distanceZ - this.SphereCenter.z) * (distanceZ - this.SphereCenter.z));
+
+        if (distance < this.SphereRadius && this.SphereCenter.y > other.BoxCenter.y)
         {
+            grounded = true;
+        }
+        else
+            grounded = false;
 
+        if (!grounded && distance < this.SphereRadius && this.SphereCenter.y < other.BoxCenter.y|| !grounded && distance < this.SphereRadius && this.SphereCenter.x < other.BoxCenter.x || !grounded && distance < this.SphereRadius && this.SphereCenter.x > other.BoxCenter.x || !grounded && distance < this.SphereRadius && this.SphereCenter.z < other.BoxCenter.z || !grounded && distance < this.SphereRadius && this.SphereCenter.z > other.BoxCenter.z )
+        {
+            Destroy(this);
         }
     }
 }

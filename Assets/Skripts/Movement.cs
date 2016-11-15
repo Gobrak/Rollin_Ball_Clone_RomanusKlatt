@@ -3,17 +3,21 @@ using System.Collections;
 
 public class Movement : MotherCollider
 {
-
+    [SerializeField]
     public float speed;
+    [SerializeField]
     public float fallingSpeed;
+    [SerializeField]
     public float moveSpeedRight;
+    [SerializeField]
     public float moveSpeedLeft;
+
     Vector3D StartVector;
     Vector3D UpdatePosition;
     // Use this for initialization
     void Start()
     {
-        StartVector = new Vector3D(0, 0, 0);
+        StartVector = new Vector3D(0, 1, 0);
         this.gameObject.transform.position = StartVector;
         speed = 0.01f;
         fallingSpeed = 0.1f;
