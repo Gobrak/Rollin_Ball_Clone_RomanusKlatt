@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BoxCollider : MonoBehaviour
+public class BoxCollider : MotherCollider
 {
     Vector3D BoxBottomLeftFront;
     Vector3D BoxBottomLeftBack;
@@ -11,19 +11,16 @@ public class BoxCollider : MonoBehaviour
     Vector3D BoxTopLeftBack;
     Vector3D BoxTopRightFront;
     Vector3D BoxTopRightBack;
+    Vector3D BoxCenter;
+    Vector3D BoxSize;
 
-    float smallestX;
-    float smallestY;
-    float smallestZ;
-    float biggestX;
-    float biggestY;
-    float biggestZ;
+
 
     BoxCollider()
     {
         Bounds bounds = this.gameObject.GetComponent<Bounds>();
-        Vector3D BoxSize = Vector3D.ConvertToVector3D(bounds.size);
-        Vector3D BoxCenter = Vector3D.ConvertToVector3D(bounds.center);
+        BoxSize = Vector3D.ConvertToVector3D(bounds.size);
+        BoxCenter = Vector3D.ConvertToVector3D(bounds.center);
 
         BoxBottomLeftFront = new Vector3D(BoxCenter.x - BoxSize.x / 2, BoxCenter.y - BoxSize.y / 2, BoxCenter.z - BoxSize.z / 2);
         BoxBottomLeftBack = new Vector3D(BoxCenter.x - BoxSize.x / 2, BoxCenter.y - BoxSize.y / 2, BoxCenter.z + BoxSize.z / 2);
@@ -50,17 +47,27 @@ public class BoxCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BoxCollider other = FindObjectsOfTypeAll(BoxCollider);
-        this.Collision(this, other);
+   
     }
 
-    public bool Collision(BoxCollider a, BoxCollider b)
+    public override void Collision( MotherCollider other) 
     {
-        if (a.smallestX <= b.biggestX && a.biggestX >= b.smallestX && a.smallestY <= b.biggestY && a.biggestY >= b.smallestY && a.smallestZ <= b.biggestZ && a.biggestZ >= b.smallestZ)
-        {
-            return true;
-        }
-        else
-            return false;
+    //    if (this.smallestX <= other.biggestX && this.biggestX >= other.smallestX && this.smallestY <= other.biggestY && this.biggestY >= other.smallestY && this.smallestZ <= other.biggestZ && this.biggestZ >= other.smallestZ)
+    //    {
+    //        if (this.BoxCenter.x<)
+    //        {
+
+    //        }
+    //        else if (this.BoxCenter.x>)
+    //        {
+
+    //        }
+    //        else if (this.BoxCenter.y<)
+    //        {
+
+    //        }
+    //    }
+    //    else
+          
     }
 }

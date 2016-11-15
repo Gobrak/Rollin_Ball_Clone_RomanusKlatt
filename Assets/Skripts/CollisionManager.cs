@@ -2,21 +2,36 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class CollisionManager
+public abstract class CollisionManager: MonoBehaviour
 {
-    public List<BoxCollider> Collisionboxes = new List<BoxCollider>();
+    public List<MotherCollider> Collisionboxes = new List<MotherCollider>();
 
+    public void CheckNewBoxes()
+    {
+        GameObject[] AllCollisionBoxes = GameObject.FindGameObjectsWithTag("collision");
+        for (int i = 0; i < AllCollisionBoxes.GetLength(0); i++)
+        {
+            Collisionboxes.Add(AllCollisionBoxes[i].GetComponent<MotherCollider>());
+        }
+    }
 
-
-
-    // Update is called once per frame
-    void Update()
+    void update()
     {
 
     }
 
-    public void CheckBoxCollider()
+    public void Collisiondetektion()
     {
-        Collisionboxes.FindAll(BoxCollider items).Add;
+        foreach (var ColliderA in Collisionboxes)
+        {
+            foreach (var ColliderB in Collisionboxes)
+            {
+                if (ColliderA != ColliderB)
+                {
+                    ColliderA.transform.GetComponent<BoxCollider>().Collision( ColliderB);
+                } 
+            }
+        }
+
     }
 }
