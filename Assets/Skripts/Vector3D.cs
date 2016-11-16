@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Vector3D
+[Serializable]
+public struct Vector3D
 {
     public float x, y, z;
 
@@ -10,6 +12,14 @@ public class Vector3D
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+    public float Magnitude()
+    {
+        return Mathf.Sqrt(x * x + y * y + z * z);
+    }
+    public static Vector3D operator -(Vector3D x,Vector3D y)
+    {
+        return new Vector3D(x.x - y.x, x.y - y.y, x.z - y.z);
     }
 
     public Vector3D Translate(Vector3D end)
@@ -20,7 +30,7 @@ public class Vector3D
     {
         return new Vector3(m.x, m.y, m.z);
     }
-    public static Vector3D ConvertToVector3D(Vector3 m)
+    public static implicit operator Vector3D(Vector3 m)
     {
         return new Vector3D(m.x, m.y, m.z);
     }

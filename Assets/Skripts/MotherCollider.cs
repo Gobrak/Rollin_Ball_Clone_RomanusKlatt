@@ -1,24 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public abstract class MotherCollider: MonoBehaviour
 {
-    public float smallestX;
-    public float smallestY;
-    public float smallestZ;
-    public float biggestX;
-    public float biggestY;
-    public float biggestZ;
-    public float distanceX;
-    public float distanceY;
-    public float distanceZ;
+    public event Action<MotherCollider> Collision;
     public bool grounded;
+    public Vector3D Center;
+    public Vector3D WorldCenter { get { return transform.position + Center; } }
 
-    public Vector3D BoxCenter;
-    public Vector3D BoxSize;
-
-    public virtual void Collision(MotherCollider other)
+    private void OnEnable()
     {
-      
+        FindObjectOfType<CollisionManager>().AddedColliders.Add(this);
     }
+    private void OnDisable()
+    {
+        FindObjectOfType<CollisionManager>().RemovedColliders.Add(this);
+    }
+ 
+    public void OnCollision(MotherCollider other)
+    {
+        if (Collision!=null)
+        {
+            Collision(other);
+        }
+    }
+
 }
