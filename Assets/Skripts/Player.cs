@@ -20,12 +20,15 @@ public class Player : MonoBehaviour
         }
         else
             collider.enabled = false;
-        //throw new System.NotImplementedException();
+    
     }
 
     // Update is called once per frame
     void Update ()
     {
-	
+        if (this.gameObject.transform.position.y<0)
+        {
+            collider.enabled = false;
+        }
 	}
 }

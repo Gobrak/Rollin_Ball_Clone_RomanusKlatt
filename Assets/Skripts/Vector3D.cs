@@ -43,7 +43,7 @@ public struct Vector3D
     public static Vector3D Falling(GameObject m,float fallingSpeed)
     {
  
-        return new Vector3D(m.transform.position.x, m.transform.position.y-fallingSpeed, m.transform.position.z);
+        return new Vector3D(m.transform.position.x, m.transform.position.y-fallingSpeed * Time.deltaTime, m.transform.position.z);
     }
 
 }
