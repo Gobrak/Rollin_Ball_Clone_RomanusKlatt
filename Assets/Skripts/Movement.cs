@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     public float moveSpeedLeft;
     [SerializeField]
     public float jumpHeight;
-    float timer;
+    public float timer;
 
     MotherCollider collider;
     Vector3D StartVector;
@@ -23,10 +23,10 @@ public class Movement : MonoBehaviour
     {
         StartVector = new Vector3D(0, 2, 0);
         collider = GetComponent<MotherCollider>();
-        gameObject.transform.position = StartVector;    
+        gameObject.transform.position = StartVector;
         moveSpeedLeft = 0.1f;
-        moveSpeedRight = 0.1f;      
-        timer = 0;
+        moveSpeedRight = 0.1f;
+        timer = 0f;
     }
 
     // Update is called once per frame
@@ -37,8 +37,12 @@ public class Movement : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > 0.14f)
             {
-                this.gameObject.transform.position = Vector3D.Falling(this.gameObject, fallingSpeed);               
+                this.gameObject.transform.position = Vector3D.Falling(this.gameObject, fallingSpeed);
             }
+        }
+        if (collider.grounded)
+        {
+            timer = 0f;
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -49,12 +53,6 @@ public class Movement : MonoBehaviour
         {
             UpdatePosition = Vector3D.Position(this.gameObject);
             this.gameObject.transform.position = StartVector.Translate(new Vector3D(this.gameObject.transform.position.x - moveSpeedLeft, UpdatePosition.y, UpdatePosition.z));
-        }
-        if (Input.GetKey(KeyCode.Space) && collider.grounded)
-        {
-            UpdatePosition = Vector3D.Position(this.gameObject);
-            this.gameObject.transform.position = StartVector.Translate(new Vector3D(UpdatePosition.x, this.gameObject.transform.position.y + jumpHeight * Time.deltaTime, UpdatePosition.z));
-            timer = 0;
         }
         UpdatePosition = Vector3D.Position(this.gameObject);
         this.transform.position = StartVector.Translate(new Vector3D(UpdatePosition.x, UpdatePosition.y, this.gameObject.transform.position.z + speed));
