@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    MotherCollider collider;
+    MotherCollider colliders;
 
 	// Use this for initialization
 	void Start ()
     {
-        collider = GetComponent<MotherCollider>();
-        collider.Collision += Player_Collision;
+        colliders = GetComponent<MotherCollider>();
+        colliders.Collision += Player_Collision;
     }
 
     private void Player_Collision(MotherCollider obj)
     {
         if (obj.gameObject.layer == 8)
         {
-            collider.grounded = true;
+            colliders.grounded = true;
         }
         else
-            collider.enabled = false;
+            colliders.enabled = false;
     
     }
 
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour
     {
         if (this.gameObject.transform.position.y<0)
         {
-            collider.enabled = false;
+            colliders.enabled = false;
+            SceneManager.LoadScene("LooseScene");
         }
 	}
 }

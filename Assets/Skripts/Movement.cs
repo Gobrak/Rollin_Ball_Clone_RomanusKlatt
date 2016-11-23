@@ -15,14 +15,14 @@ public class Movement : MonoBehaviour
     public float jumpHeight;
     public float timer;
 
-    MotherCollider collider;
+    MotherCollider colliders;
     Vector3D StartVector;
     Vector3D UpdatePosition;
     // Use this for initialization
     void Start()
     {
         StartVector = new Vector3D(0, 2, 0);
-        collider = GetComponent<MotherCollider>();
+        colliders = GetComponent<MotherCollider>();
         gameObject.transform.position = StartVector;
         moveSpeedLeft = 0.1f;
         moveSpeedRight = 0.1f;
@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!collider.grounded)
+        if (!colliders.grounded)
         {
             timer += Time.deltaTime;
             if (timer > 0.14f)
@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
                 this.gameObject.transform.position = Vector3D.Falling(this.gameObject, fallingSpeed);
             }
         }
-        if (collider.grounded)
+        if (colliders.grounded)
         {
             timer = 0f;
         }
@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
             this.gameObject.transform.position = StartVector.Translate(new Vector3D(this.gameObject.transform.position.x - moveSpeedLeft, UpdatePosition.y, UpdatePosition.z));
         }
         UpdatePosition = Vector3D.Position(this.gameObject);
-        this.transform.position = StartVector.Translate(new Vector3D(UpdatePosition.x, UpdatePosition.y, this.gameObject.transform.position.z + speed));
+        this.transform.position = StartVector.Translate(new Vector3D(UpdatePosition.x, UpdatePosition.y, (this.gameObject.transform.position.z + speed*Time.deltaTime)));
     }
 
 

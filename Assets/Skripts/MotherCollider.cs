@@ -8,14 +8,15 @@ public abstract class MotherCollider: MonoBehaviour
     public bool grounded;
     public Vector3D Center;
     public Vector3D WorldCenter { get { return transform.position + Center; } }
-
+    private CollisionManager collisionManager;
     private void OnEnable()
     {
-        FindObjectOfType<CollisionManager>().AddedColliders.Add(this);
+        collisionManager = FindObjectOfType<CollisionManager>();
+        collisionManager.AddedColliders.Add(this);
     }
     private void OnDisable()
     {
-        FindObjectOfType<CollisionManager>().RemovedColliders.Add(this);
+        collisionManager.RemovedColliders.Add(this);
     }
  
     public void OnCollision(MotherCollider other)

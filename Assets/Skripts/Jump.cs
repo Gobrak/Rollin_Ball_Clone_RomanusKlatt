@@ -3,15 +3,15 @@ using System.Collections;
 
 public class Jump : MonoBehaviour
 {
-    public MotherCollider collider;
+    public MotherCollider colliders;
     Vector3D UpdatePosition;
     public float jumpHeight;
     public Animator _animator;
     // Use this for initialization
     void Start()
     {
-        collider = GetComponent<MotherCollider>();
-        collider.Collision += Jump_Collision;
+        colliders = GetComponent<MotherCollider>();
+        colliders.Collision += Jump_Collision;
         jumpHeight = 120.0f;
         _animator = GetComponent<Animator>();
     }
