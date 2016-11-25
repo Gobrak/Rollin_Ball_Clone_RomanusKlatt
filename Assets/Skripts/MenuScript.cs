@@ -10,7 +10,6 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         Menuobject.SetActive(false);
-        Time.timeScale = 1;
     }
 
     // Update is called once per frame

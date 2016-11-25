@@ -18,7 +18,7 @@ public class SpeedDown : MonoBehaviour
     {
         if (obj.CompareTag("Player"))
         {
-            obj.GetComponent<Movement>().speed = newSpeed;
+            obj.GetComponent<SphereMovement>().speed = newSpeed;
         }
     }
 

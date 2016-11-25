@@ -18,7 +18,7 @@ public class SpeedUp : MonoBehaviour
     {
         if (obj.gameObject.tag=="Player")
         {
-            obj.GetComponent<Movement>().speed = newSpeed;
+            obj.GetComponent<SphereMovement>().speed = newSpeed;
         }
     }
 
