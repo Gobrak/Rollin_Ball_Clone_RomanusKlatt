@@ -20,6 +20,7 @@ public class SphereMovement : MonoBehaviour
         colliders = GetComponent<MotherCollider>();
         gameObject.transform.position = StartVector;
         timer = 0f;
+        speed = 12.0f;
     }
 
     // Update is called once per frame

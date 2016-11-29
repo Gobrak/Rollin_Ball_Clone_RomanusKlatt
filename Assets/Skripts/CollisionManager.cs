@@ -12,9 +12,13 @@ public class CollisionManager : MonoBehaviour
     public List<MotherCollider> Collisionboxes = new List<MotherCollider>();
     public List<MotherCollider> RemovedColliders = new List<MotherCollider>();
     public List<MotherCollider> AddedColliders = new List<MotherCollider>();
+    public GameObject Sphere;
+    public static float distance;
+    public float distance2;
 
     void Update()
     {
+        distance2 = distance;
         Collisionboxes.AddRange(AddedColliders);
         AddedColliders.Clear();
         foreach (var ColliderA in Collisionboxes)
@@ -22,7 +26,7 @@ public class CollisionManager : MonoBehaviour
             ColliderA.grounded = false;
             foreach (var ColliderB in Collisionboxes)
             {
-                if (ColliderA != ColliderB)
+                if (ColliderA != ColliderB && (ColliderA.dynamic || ColliderB.dynamic))
                 {
                     bool colliding = false;
                     if (ColliderA is SphereCollider && ColliderB is SphereCollider)
@@ -39,7 +43,7 @@ public class CollisionManager : MonoBehaviour
                     }
                     else if (ColliderA is BoxCollider && ColliderB is SphereCollider)
                     {
-                        colliding = HandleCollision((SphereCollider)ColliderB,(BoxCollider) ColliderA);
+                        colliding = HandleCollision((SphereCollider)ColliderB, (BoxCollider)ColliderA);
                     }
 
                     if (colliding)
@@ -59,7 +63,7 @@ public class CollisionManager : MonoBehaviour
 
     private static bool HandleCollision(SphereCollider ColliderA, SphereCollider ColliderB)
     {
-        return  (ColliderA.WorldCenter-ColliderB.WorldCenter).Magnitude()< ColliderA.SphereRadius + ColliderB.SphereRadius ;
+        return (ColliderA.WorldCenter - ColliderB.WorldCenter).Magnitude() < ColliderA.SphereRadius + ColliderB.SphereRadius;
     }
     private static bool HandleCollision(SphereCollider ColliderA, BoxCollider ColliderB)
     {
@@ -71,7 +75,8 @@ public class CollisionManager : MonoBehaviour
         distanceY = Mathf.Max(ColliderB.WorldBottom, Mathf.Min(ColliderA.WorldCenter.y, ColliderB.WorldTop));
         distanceZ = Mathf.Max(ColliderB.WorldFront, Mathf.Min(ColliderA.WorldCenter.z, ColliderB.WorldBack));
 
-        float distance = Mathf.Sqrt((distanceX - ColliderA.WorldCenter.x) * (distanceX - ColliderA.WorldCenter.x) + (distanceY - ColliderA.WorldCenter.y) * (distanceY - ColliderA.WorldCenter.y) + (distanceZ - ColliderA.WorldCenter.z) * (distanceZ - ColliderA.WorldCenter.z));
+        distance = Mathf.Sqrt((distanceX - ColliderA.WorldCenter.x) * (distanceX - ColliderA.WorldCenter.x) + (distanceY - ColliderA.WorldCenter.y) * (distanceY - ColliderA.WorldCenter.y) + (distanceZ - ColliderA.WorldCenter.z) * (distanceZ - ColliderA.WorldCenter.z));
+        ColliderB.distance = distance;
 
         return distance < ColliderA.SphereRadius;
     }

@@ -19,7 +19,5 @@ public void start(string scene)
         SceneManager.LoadScene(scene);
     }
 
-    public void Resume(string scene)
-    {
-    }
+
 }

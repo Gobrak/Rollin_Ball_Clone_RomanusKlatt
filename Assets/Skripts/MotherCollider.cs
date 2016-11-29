@@ -9,6 +9,8 @@ public abstract class MotherCollider: MonoBehaviour
     public Vector3D Center;
     public Vector3D WorldCenter { get { return transform.position + Center; } }
     private CollisionManager collisionManager;
+    public float distance;
+    public bool dynamic = false;
     private void OnEnable()
     {
         collisionManager = FindObjectOfType<CollisionManager>();

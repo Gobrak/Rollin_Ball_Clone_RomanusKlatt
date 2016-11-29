@@ -17,8 +17,16 @@ public class MenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (Time.timeScale==0)
+            {
+                Menuobject.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
             Menuobject.SetActive(true);
             Time.timeScale = 0;
+            }
         }
     }
 
