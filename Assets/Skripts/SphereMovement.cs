@@ -28,18 +28,18 @@ public class SphereMovement : MonoBehaviour
     {
         if (StarCountDown.play)
         {
-            if (!colliders.grounded)
-            {
-                timer += Time.deltaTime;
-                if (timer > 0.14f)
-                {
-                    this.gameObject.transform.position = Vector3D.Falling(this.gameObject, fallingSpeed);
-                }
-            }
             if (colliders.grounded)
             {
-                timer = 0f;
+                fallingSpeed = 0;
             }
+            else
+            {
+                fallingSpeed = -4;
+            }
+            GetComponent<Jump>().DoJump();
+
+            this.gameObject.transform.position = Vector3D.Falling(this.gameObject, fallingSpeed);
+
             UpdatePosition = Vector3D.Position(this.gameObject);
             this.transform.position = StartVector.Translate(new Vector3D(UpdatePosition.x, UpdatePosition.y, (this.gameObject.transform.position.z + speed * Time.deltaTime)));
         }

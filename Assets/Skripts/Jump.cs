@@ -4,30 +4,48 @@ using System.Collections;
 public class Jump : MonoBehaviour
 {
     public MotherCollider colliders;
-    Vector3D UpdatePosition;
-    public float jumpHeight;
-    public Animator _animator;
+    public SphereMovement obj;
+    public AudioManager AudioContainer;
+    private AudioSource SoundsourceJump;
+    private float timer;
+    private bool isJumping;
     // Use this for initialization
     void Start()
     {
         colliders = GetComponent<MotherCollider>();
         colliders.Collision += Jump_Collision;
-        jumpHeight = 120.0f;
-        _animator = GetComponent<Animator>();
+        isJumping = false;
+        SoundsourceJump = GetComponent<AudioSource>();
     }
 
     private void Jump_Collision(MotherCollider obj)
     {
-        if (obj.gameObject.tag == "Player")
+        if (obj.gameObject.tag == "jump" && !isJumping)
         {
-            obj.transform.Translate(new Vector3D(UpdatePosition.x, obj.gameObject.transform.position.y + jumpHeight * Time.deltaTime, UpdatePosition.z));
-            _animator.SetTrigger("istriggered");
+            timer = 0;
+            colliders.grounded = false;
+            obj.GetComponent<Animator>().SetTrigger("istriggered");
+            isJumping = true;
+            SoundsourceJump.PlayOneShot(AudioContainer.au_jump);
+
         }
     }
     // Update is called once per frame
-    void Update()
+    public void DoJump()
     {
-
+        if (isJumping == true)
+        {
+            timer += Time.deltaTime;
+            if (timer < 0.3f)
+            {
+                colliders.grounded = false;
+                obj.fallingSpeed = 6;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
     }
 }
 

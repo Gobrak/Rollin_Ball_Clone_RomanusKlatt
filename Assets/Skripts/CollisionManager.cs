@@ -21,42 +21,45 @@ public class CollisionManager : MonoBehaviour
         distance2 = distance;
         Collisionboxes.AddRange(AddedColliders);
         AddedColliders.Clear();
-        foreach (var ColliderA in Collisionboxes)
+        var dynamicColliders = Collisionboxes.FindAll(x => x.dynamic);
+        foreach (var item in dynamicColliders)
         {
-            ColliderA.grounded = false;
-            foreach (var ColliderB in Collisionboxes)
+            item.grounded = false;
+            foreach (var other in Collisionboxes)
             {
-                if (ColliderA != ColliderB && (ColliderA.dynamic || ColliderB.dynamic))
+                if (item == other)
                 {
-                    bool colliding = false;
-                    if (ColliderA is SphereCollider && ColliderB is SphereCollider)
-                    {
-                        colliding = HandleCollision((SphereCollider)ColliderA, (SphereCollider)ColliderB);
-                    }
-                    else if (ColliderA is BoxCollider && ColliderB is BoxCollider)
-                    {
-                        colliding = HandleCollision((BoxCollider)ColliderA, (BoxCollider)ColliderB);
-                    }
-                    else if (ColliderA is SphereCollider && ColliderB is BoxCollider)
-                    {
-                        colliding = HandleCollision((SphereCollider)ColliderA, (BoxCollider)ColliderB);
-                    }
-                    else if (ColliderA is BoxCollider && ColliderB is SphereCollider)
-                    {
-                        colliding = HandleCollision((SphereCollider)ColliderB, (BoxCollider)ColliderA);
-                    }
+                    continue;
+                }
+                bool colliding = false;
+                if (item is SphereCollider && other is SphereCollider)
+                {
+                    colliding = HandleCollision((SphereCollider)item, (SphereCollider)other);
+                }
+                else if (item is BoxCollider && other is BoxCollider)
+                {
+                    colliding = HandleCollision((BoxCollider)item, (BoxCollider)other);
+                }
+                else if (item is SphereCollider && other is BoxCollider)
+                {
+                    colliding = HandleCollision((SphereCollider)item, (BoxCollider)other);
+                }
+                else if (item is BoxCollider && other is SphereCollider)
+                {
+                    colliding = HandleCollision((SphereCollider)other, (BoxCollider)item);
+                }
 
-                    if (colliding)
-                    {
-                        ColliderA.OnCollision(ColliderB);
-                    }
+                if (colliding)
+                {
+                    item.OnCollision(other);
+                    other.OnCollision(item);
                 }
             }
         }
         foreach (var item in RemovedColliders)
         {
             Collisionboxes.Remove(item);
-            Destroy(item.gameObject);
+            Destroy(item.gameObject,2f);
         }
         RemovedColliders.Clear();
     }

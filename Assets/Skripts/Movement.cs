@@ -19,13 +19,15 @@ public class Movement : MonoBehaviour
     MotherCollider colliders;
     Vector3D StartVector;
     Vector3D UpdatePosition;
+    Vector3D MovementVector;
     // Use this for initialization
     void Start()
     {
         StartVector = new Vector3D(0, 2, 0);
         gameObject.transform.position = StartVector;
-        moveSpeedLeft = 0.1f;
-        moveSpeedRight = 0.1f;
+        moveSpeedLeft = 0.15f;
+        moveSpeedRight = 0.15f;
+        touchspeed = 7f;
     }
 
 #if UNITY_STANDALONE
@@ -47,12 +49,16 @@ public class Movement : MonoBehaviour
     }
 #endif
 #if UNITY_ANDROID
-    void Update() 
+    void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        if (StarCountDown.play)
         {
-            Vector2 touchPosition = Input.GetTouch(0).deltaPosition;
-            transform.Translate(touchPosition.x * touchspeed, touchPosition.y * touchspeed, 0);
+            MovementVector = new Vector3D(0, 0, 0);
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                MovementVector.x = Input.GetTouch(0).deltaPosition.x;
+                this.gameObject.GetComponent<Transform>().transform.Translate(MovementVector.x * touchspeed * Time.deltaTime, MovementVector.y, MovementVector.z);
+            }
         }
     }
 

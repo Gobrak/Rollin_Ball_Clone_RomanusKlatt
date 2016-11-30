@@ -24,4 +24,10 @@ public class BoxCollider : MotherCollider
     public float WorldBottom { get{ return transform.position.y + Bottom; } }
     public float WorldFront { get{ return transform.position.z + Front; } }
     public float WorldBack { get{ return transform.position.z + Back; } }
+
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawCube(WorldCenter, BoxSize);
+    //}
+
 }
