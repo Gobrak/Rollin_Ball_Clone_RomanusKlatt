@@ -16,7 +16,7 @@ public class SphereMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartVector = new Vector3D(0, 2, -5);
+        StartVector = new Vector3D(0, 2, 0);
         colliders = GetComponent<MotherCollider>();
         gameObject.transform.position = StartVector;
         timer = 0f;

@@ -14,7 +14,6 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         uiObjektPC.SetActive(true);
-        uiObjektAndroid.SetActive(false);
     }
 
 #endif
@@ -23,22 +22,6 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         uiObjektPC.SetActive(false);
-        uiObjektAndroid.SetActive(true);
-        uiSlider.value = 0.5f;
-    }
-
-    void Update()
-    {
-        if (Player.transform.position.x<Player.transform.position.x-1.0f*Time.deltaTime)
-        {
-            uiSlider.value--;
-        }
-        if (Player.transform.position.x > Player.transform.position.x - 1.0f * Time.deltaTime)
-        {
-            uiSlider.value++;
-        }
-        else
-            uiSlider.value=0.5f;
     }
 #endif
 }
