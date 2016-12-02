@@ -7,12 +7,13 @@ public class StarCountDown : MonoBehaviour
     public Text textObjekt;
     public GameObject menueObjekt;
     private float timer = 4;
-    public static bool play = false;
+    public static bool play;
     private bool textbool = true;
 
     // Use this for initialization
     void Start()
     {
+        play = false;
         menueObjekt.SetActive(true);
         textObjekt.text = string.Empty;
     }

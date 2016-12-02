@@ -10,6 +10,7 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         Menuobject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -17,15 +18,15 @@ public class MenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Time.timeScale==0)
+            if (Time.timeScale==1)
             {
-                Menuobject.SetActive(false);
-                Time.timeScale = 1;
+                Menuobject.SetActive(true);
+                Time.timeScale = 0;
             }
             else
             {
-            Menuobject.SetActive(true);
-            Time.timeScale = 0;
+            Menuobject.SetActive(false);
+            Time.timeScale = 1;
             }
         }
     }

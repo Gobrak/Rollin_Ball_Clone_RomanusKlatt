@@ -5,10 +5,6 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     public GameObject uiObjektPC;
-    public GameObject uiObjektAndroid;
-    public GameObject Player;
-    public Slider uiSlider;
-    public UIHandler handle;
 #if UNITY_STANDALONE
     
     void Start()
@@ -24,4 +20,5 @@ public class UIHandler : MonoBehaviour
         uiObjektPC.SetActive(false);
     }
 #endif
+
 }
