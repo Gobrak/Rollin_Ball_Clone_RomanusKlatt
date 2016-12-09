@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAACAAAAIAAIAAgABAAAAIAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoxCollider" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEQAAACAAgAAAAAAQAIHAEAAICABACAKAACkAAQA=</HashCode>
+      <FileName>Assets\Skripts\BoxCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonHandler" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Skripts\ButtonHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionManager" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAgAAAAAAAAAAQAAAAAAEAAABAAAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\CollisionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jump" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAgAAACAAIAAAAAEQAAAAAAAAAAAAAAAAEAEAAAA=</HashCode>
+      <FileName>Assets\Skripts\Jump.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuScript" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAgAEAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Skripts\MenuScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MotherCollider" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAIEAgAAAAAAAAAABAEAAAAAIIAAAAAAICAA=</HashCode>
+      <FileName>Assets\Skripts\MotherCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Movement" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEYAAAAACCAAACAAAAIQIAAAAAAAAAAAACAAEAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\Movement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhQAAAAABCAAAAAAAAAAAAABAAAAAAAAAAgAEAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpeedDown" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAFCAAQAAAAAAAAAABAAAAAAAAAgAAEAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\SpeedDown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpeedUp" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAABCAAAAAIAAAAAAABAAAgAAAAAgAAEAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\SpeedUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SphereCollider" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\SphereCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SphereMovement" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAACAAACAAAAAQAAAAAAAAAQAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\SphereMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StarCountDown" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAEAAAAAAAAAAACAAAgAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Skripts\StarCountDown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Timer" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Skripts\Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIHandler" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Skripts\UIHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Vector3D" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAEAQAAAAAAABAAAAADkAQEAAAA=</HashCode>
+      <FileName>Assets\Skripts\Vector3D.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
